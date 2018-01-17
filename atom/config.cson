@@ -1,0 +1,31 @@
+"*":
+  "atom-package-deps":
+    ignored: []
+  core:
+    disabledPackages: [
+      "atom-autocomplete-php"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "seti-ui"
+      "one-dark-syntax"
+    ]
+  editor:
+    fontFamily: "Droid Sans Mono"
+    fontSize: 15
+  "exception-reporting":
+    userId: "02672d5b-79c4-44a2-9c52-e1d2da3a0d6b"
+  fonts:
+    fontFamily: "Roboto Mono"
+  "isotope-ui":
+    fontFamily: "Fira Sans"
+  "linter-ui-default":
+    panelHeight: 36
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+      pigments: true
+      pigmentsDecorationsZIndex: 0
+  welcome:
+    showOnStartup: false
