@@ -1,0 +1,264 @@
+@import "/home/ineoo/.config/waybar/mocha.css";
+
+* {
+  font-family:
+    "Noto Sans", "Font Awesome 6 Free", "Symbols Nerd Font",
+    "Noto Sans Symbols2", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text;
+}
+
+/* évite le flash au reload */
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/* base de tous les modules */
+#workspaces,
+#mode,
+#scratchpad,
+#custom-media,
+#window,
+#mpd,
+#idle_inhibitor,
+#pulseaudio,
+#network,
+#power-profiles-daemon,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#keyboard-state,
+#language,
+#battery,
+#custom-display,
+#clock,
+#tray,
+#custom-power {
+  background: alpha(@surface0, 0.92);
+  color: @text;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding: 0 10px;
+  min-height: 24px;
+}
+
+/* groupes arrondis */
+#workspaces,
+#mode,
+#scratchpad,
+#custom-media {
+  border-radius: 12px;
+  margin-left: 6px;
+  margin-right: 0;
+}
+
+#window {
+  border-radius: 12px;
+  margin-left: 6px;
+  margin-right: 6px;
+  padding: 0 14px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+#mpd,
+#idle_inhibitor,
+#pulseaudio,
+#network,
+#power-profiles-daemon,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#keyboard-state,
+#language,
+#battery,
+#custom-display,
+#tray {
+  border-radius: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* bord gauche du bloc droit */
+#mpd {
+  border-radius: 12px 0 0 12px;
+  margin-left: 6px;
+}
+
+/* bord droit du bloc droit */
+#custom-power {
+  border-radius: 0 12px 12px 0;
+  margin-right: 6px;
+  color: @red;
+  padding-right: 14px;
+  padding-left: 12px;
+}
+
+/* si clock est avant tray/power et tu veux le laisser visuellement intégré */
+#clock {
+  border-radius: 0;
+}
+
+/* tray un peu plus respirant */
+#tray {
+  padding: 0 12px;
+}
+
+/* hover */
+#workspaces button:hover,
+#mode:hover,
+#scratchpad:hover,
+#custom-media:hover,
+#window:hover,
+#mpd:hover,
+#idle_inhibitor:hover,
+#pulseaudio:hover,
+#network:hover,
+#power-profiles-daemon:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#backlight:hover,
+#keyboard-state:hover,
+#language:hover,
+#battery:hover,
+#custom-display:hover,
+#clock:hover,
+#tray:hover,
+#custom-power:hover {
+  background: alpha(@surface1, 0.95);
+}
+
+/* workspaces */
+#workspaces {
+  padding: 0 6px;
+}
+
+#workspaces button {
+  background: transparent;
+  color: @overlay1;
+  padding: 0 8px;
+  margin: 4px 2px;
+  border-radius: 10px;
+  transition: none;
+}
+
+#workspaces button:hover {
+  color: @text;
+  background: alpha(@blue, 0.18);
+}
+
+#workspaces button.active {
+  background: @blue;
+  color: @base;
+}
+
+#workspaces button.urgent {
+  background: @red;
+  color: @base;
+}
+
+/* couleurs par module */
+#clock {
+  color: @mauve;
+}
+
+#network {
+  color: @sky;
+}
+
+#pulseaudio {
+  color: @green;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.warning {
+  color: @yellow;
+}
+
+#battery.critical {
+  color: @red;
+}
+
+#battery.charging {
+  color: @teal;
+}
+
+#cpu {
+  color: @peach;
+}
+
+#memory {
+  color: @lavender;
+}
+
+#temperature {
+  color: @yellow;
+}
+
+#temperature.critical {
+  color: @red;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#power-profiles-daemon {
+  color: @teal;
+}
+
+#idle_inhibitor {
+  color: @flamingo;
+}
+
+#custom-display {
+  color: @blue;
+}
+
+#custom-media,
+#mpd {
+  color: @pink;
+}
+
+#keyboard-state,
+#language,
+#scratchpad,
+#mode {
+  color: @subtext1;
+}
+
+/* tooltip */
+tooltip {
+  background: @base;
+  border: 1px solid @surface2;
+  border-radius: 10px;
+}
+
+tooltip label {
+  color: @text;
+}
+
+/* tray spacing plus propre */
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background: alpha(@red, 0.2);
+  border-radius: 8px;
+}
