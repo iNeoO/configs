@@ -158,9 +158,28 @@ window#waybar.hidden {
   background: alpha(@blue, 0.18);
 }
 
+/* workspaces des autres écrans : atténués */
+#workspaces button:not(.current_output) {
+  color: @overlay0;
+  font-style: italic;
+}
+
+#workspaces button.visible {
+  color: @text;
+}
+
+/* sway utilise la classe "focused" (pas "active") */
+#workspaces button.focused,
 #workspaces button.active {
   background: @blue;
   color: @base;
+}
+
+/* workspace focusé mais sur un autre écran : bleu translucide */
+#workspaces button.focused:not(.current_output),
+#workspaces button.active:not(.current_output) {
+  background: alpha(@blue, 0.3);
+  color: @text;
 }
 
 #workspaces button.urgent {
