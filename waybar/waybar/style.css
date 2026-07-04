@@ -2,8 +2,8 @@
 
 * {
   font-family:
-    "Noto Sans", "Font Awesome 6 Free", "Symbols Nerd Font",
-    "Noto Sans Symbols2", sans-serif;
+    "Noto Sans", "Font Awesome 7 Free", "Font Awesome 7 Brands",
+    "Noto Sans Symbols 2", sans-serif;
   font-size: 13px;
   font-weight: 700;
   min-height: 0;
@@ -31,7 +31,8 @@ window#waybar.hidden {
 #idle_inhibitor,
 #pulseaudio,
 #network,
-#power-profiles-daemon,
+#custom-power-profile,
+#custom-disk,
 #cpu,
 #memory,
 #temperature,
@@ -74,7 +75,8 @@ window#waybar.hidden {
 #idle_inhibitor,
 #pulseaudio,
 #network,
-#power-profiles-daemon,
+#custom-power-profile,
+#custom-disk,
 #cpu,
 #memory,
 #temperature,
@@ -124,7 +126,8 @@ window#waybar.hidden {
 #idle_inhibitor:hover,
 #pulseaudio:hover,
 #network:hover,
-#power-profiles-daemon:hover,
+#custom-power-profile:hover,
+#custom-disk:hover,
 #cpu:hover,
 #memory:hover,
 #temperature:hover,
@@ -236,8 +239,12 @@ window#waybar.hidden {
   color: @yellow;
 }
 
-#power-profiles-daemon {
+#custom-power-profile {
   color: @teal;
+}
+
+#custom-disk {
+  color: @sapphire;
 }
 
 #idle_inhibitor {

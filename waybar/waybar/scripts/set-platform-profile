@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -eu
+
+profile_file="/sys/firmware/acpi/platform_profile"
+
+case "${1:-}" in
+  low-power|balanced|performance|power-saver)
+    ;;
+  *)
+    echo "Usage: $0 {low-power|balanced|performance|power-saver}" >&2
+    exit 1
+    ;;
+esac
+
+printf '%s' "$1" > "$profile_file"
