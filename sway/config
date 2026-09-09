@@ -229,6 +229,18 @@ bindsym $mod+r mode "resize"
 
 focus_follows_mouse no
 
+# Ne jamais deplacer le curseur lors d'un changement de focus (defaut: output)
+mouse_warping none
+
+# ... mais mouse_warping ne couvre PAS les warps demandes par un client qui
+# capture le pointeur (pointer lock / confinement : Chromium, Figma, jeux).
+# sway/input/seat.c:1081 appelle sway_cursor_constrain(NULL) a chaque perte de
+# focus, ce qui teleporte le curseur via warp_to_constraint_cursor_hint()
+# (sway/input/cursor.c:1273) -- d'ou le saut a chaque changement de workspace.
+# Contrepartie : plus aucun client ne peut capturer le pointeur.
+# Ponctuellement : swaymsg seat seat0 pointer_constraint escape
+seat seat0 pointer_constraint disable
+
 input * {
     xkb_layout us
     xkb_variant intl
@@ -241,4 +253,9 @@ bindsym $mod+Shift+o exec ~/.config/sway/lock.sh
 exec nm-applet
 exec lxqt-policykit-agent
 exec mako
-exec waybar
+exec_always sh -c 'pkill waybar; waybar'
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway SWAYSOCK
+
+# Fenetre de saisie de passphrase SSH (~/.local/bin/ssh-askpass) : flottante
+for_window [app_id="ssh-askpass"] floating enable, resize set 640 200

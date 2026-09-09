@@ -36,7 +36,12 @@
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
-        "warp-on-scroll": false,
+        // Ne PAS mettre "warp-on-scroll": false : waybar encadre alors le
+        // changement de workspace par `mouse_warping none` puis
+        // `mouse_warping container` EN DUR (workspaces.cpp:459/467), ce qui
+        // ecrase le `mouse_warping none` de ~/.config/sway/config jusqu'au
+        // prochain reload -> le curseur se met a sauter a chaque changement
+        // de focus. Sans cette cle, waybar ne touche pas au reglage.
         "format": "{name}",
         "on-click": "activate"
     },
