@@ -18,8 +18,7 @@
         "idle_inhibitor",
         "pulseaudio",
         "network",
-        "custom/power-profile",
-        "custom/disk",
+        "power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
@@ -115,12 +114,12 @@
     },
 
     "cpu": {
-        "format": " {usage}%",
+        "format": " {usage}%",
         "tooltip": false
     },
 
     "memory": {
-        "format": " {}%"
+        "format": " {}%"
     },
 
     "temperature": {
@@ -130,7 +129,8 @@
     },
 
     "backlight": {
-        "format": " {percent}%"
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
 
     "battery": {
@@ -140,7 +140,7 @@
         },
         "format": "{icon} {capacity}%",
         "format-full": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format-charging": "󱐋 {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
@@ -150,27 +150,23 @@
         "bat": "BAT2"
     },
 
-    "custom/power-profile": {
-        "exec": "~/.config/waybar/scripts/power-profile.sh",
-        "return-type": "json",
-        "interval": 5,
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
         "tooltip": true,
-        "on-click": "~/.config/waybar/scripts/power-profile-toggle.sh"
-    },
-
-    "custom/disk": {
-        "exec": "~/.config/waybar/scripts/disk-usage.sh",
-        "return-type": "json",
-        "interval": 30,
-        "tooltip": true,
-        "on-click": "thunar /"
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
     },
 
     "network": {
-        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-wifi": "󰤨 {essid} ({signalStrength}%)",
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": "{ifname} via {gwaddr}",
-        "format-linked": "↔ {ifname} (No IP)",
+        "format-linked": "󱘖 {ifname} (No IP)",
         "format-disconnected": " Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "interval": 2
@@ -180,7 +176,7 @@
         "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": "{icon} {volume}% {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": "󰖁 {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -209,7 +205,7 @@
     },
 
     "custom/display": {
-        "format": "",
+        "format": "🖥",
         "tooltip": false,
         "on-click": "~/.config/waybar/scripts/display-menu.sh"
     }

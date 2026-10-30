@@ -13,13 +13,21 @@ set $left h
 set $down j
 set $up k
 set $right l
+# Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
 set $menu wofi
 
 ### Output configuration
 #
-output * bg ~/Pictures/gundam.jpg fill
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg ~/images/gundam.jpg fill
+
+# Sortie HDMI desactivee par defaut : on ne veut que l'ecran du laptop.
+# Pour la rallumer ponctuellement : icone display de waybar, ou
+#   swaymsg output HDMI-A-1 enable position 1920 0
+output HDMI-A-1 disable
+output eDP-1 enable position 0 0
 #
 # Example configuration:
 #
@@ -69,7 +77,7 @@ output * bg ~/Pictures/gundam.jpg fill
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec wofi --show drun --style ~/.config/wofi/style.css
+    bindsym $mod+d exec wofi --show drun
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -251,11 +259,5 @@ input * {
 bindsym $mod+Shift+o exec ~/.config/sway/lock.sh
 
 exec nm-applet
-exec lxqt-policykit-agent
-exec mako
-exec_always sh -c 'pkill waybar; waybar'
-exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway SWAYSOCK
-
-# Fenetre de saisie de passphrase SSH (~/.local/bin/ssh-askpass) : flottante
-for_window [app_id="ssh-askpass"] floating enable, resize set 640 200
+exec "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK; dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway SWAYSOCK; systemctl --user start sway-session.target"
+exec_always systemctl --user try-restart waybar

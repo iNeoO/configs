@@ -1,0 +1,66 @@
+# session
+sway
+swaybg
+swayidle
+swaylock
+xorg-xwayland
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+xdg-utils
+qt5-wayland
+waybar
+wofi
+mako
+libnotify
+kitty
+grim
+imagemagick
+brightnessctl
+network-manager-applet
+python
+
+# audio & bluetooth
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber
+pavucontrol
+bluez
+bluez-utils
+blueman
+
+# power
+power-profiles-daemon
+
+# fonts
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-dejavu
+ttf-jetbrains-mono-nerd
+ttf-nerd-fonts-symbols
+woff2-font-awesome
+
+# shell
+zsh
+git
+fzf
+fd
+htop
+unzip
+zip
+7zip
+
+# files
+nemo
+nemo-fileroller
+
+# apps
+vivaldi
+chromium
+code
+dbeaver
+github-cli
+docker
+docker-compose
+postgresql

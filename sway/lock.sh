@@ -1,13 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -e
 
-set -eu
+TMP_SCREEN=/tmp/lock-screen.png
+TMP_BLUR=/tmp/lock-blur.png
 
-if command -v makoctl >/dev/null 2>&1; then
-  makoctl mode -a do-not-disturb >/dev/null 2>&1 || true
-fi
+grim "$TMP_SCREEN"
+magick "$TMP_SCREEN" -blur 20x10 "$TMP_BLUR"
+rm -f "$TMP_SCREEN"
 
-swaylock -f -c 1e1e2e
-
-if command -v makoctl >/dev/null 2>&1; then
-  makoctl mode -r do-not-disturb >/dev/null 2>&1 || true
-fi
+swaylock --image "$TMP_BLUR"
+rm -f "$TMP_BLUR"
